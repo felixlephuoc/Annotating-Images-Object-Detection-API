@@ -51,37 +51,23 @@ For this project, a separated environment named *TensorFlow_api* is created usin
 
 
 
-```python
+```shell
 conda create -n TensorFlow_api_2 python=3.5 numpy pillow
 source activate TensorFlow_api_2
 ```
-
-
-      File "<ipython-input-9-1066e5289254>", line 1
-        conda create -n TensorFlow_api_2 python=3.5 numpy pillow
-                   ^
-    SyntaxError: invalid syntax
 
 
 
 After activating the environment, we install the necessary packages using *conda install*:
 
 
-```python
+```shell
 conda install TensorFlow-gpu
 conda install -c menpo opencv
 conda install -c conda-forge imageio
 conda install tqdm
 conda install -c conda-forge moviepy
 ```
-
-
-      File "<ipython-input-8-cf416f91db41>", line 1
-        conda install TensorFlow-gpu
-                    ^
-    SyntaxError: invalid syntax
-
-
 
 
 ```python
