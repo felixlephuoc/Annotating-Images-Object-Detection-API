@@ -51,7 +51,7 @@ For this project, a separated environment named *TensorFlow_api* is created usin
 
 
 
-```shell
+```bash
 conda create -n TensorFlow_api_2 python=3.5 numpy pillow
 source activate TensorFlow_api_2
 ```
@@ -61,7 +61,7 @@ source activate TensorFlow_api_2
 After activating the environment, we install the necessary packages using *conda install*:
 
 
-```shell
+```bash
 conda install TensorFlow-gpu
 conda install -c menpo opencv
 conda install -c conda-forge imageio
