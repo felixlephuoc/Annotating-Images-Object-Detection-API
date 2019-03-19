@@ -87,3 +87,6 @@ Steps by steps showing code of *object_detection.py*
 ## Insert Picture _ Testing
 ![jpeg](./sample_images/intersection.jpg)
 
+## Insert Video - Testing
+[![webcam_video](./webcam_videos/webcam2019-03-07_11h05m50s_final.gif)](https://www.youtube.com/watch?v=IUuX6CzEdlg&feature=youtu.be)
+
