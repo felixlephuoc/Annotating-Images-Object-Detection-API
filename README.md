@@ -83,3 +83,7 @@ Steps by steps showing code of *object_detection.py*
 2. Annotating video with video_pipeline.py
 3. Annotating screenshot captured by webcam with webcam_pipeline.py
 4. Real-time webcam detection
+
+## Insert Picture _ Testing
+![jpeg](./sample_images/intersection.jpg)
+
