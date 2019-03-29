@@ -686,7 +686,7 @@ The original video and annotated videos are displayed below. To view the full vi
 * #### Original `swan_cross_road` video: 
 (source: *Storyful Rights Management*: https://www.youtube.com/watch?v=tOMF4HLBCA0 )
 
-[![swan_cross_road](./sample_videos/swan_cross_road.gif)](https://www.youtube.com/watch?v=tOMF4HLBCA0)
+![swan_cross_road](./sample_videos/swan_cross_road.gif)
 
 * #### Annotated `swan_cross_road` video using `ssd_mobilenet_v1_coco_11_06_2017` model:
 
