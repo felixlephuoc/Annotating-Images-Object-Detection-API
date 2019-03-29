@@ -1,9 +1,9 @@
 
 
-   # Annotating Images with TensorFlow Object Detection API 
+# Annotating Images with TensorFlow Object Detection API 
    
-   Felix Le Hong Phuoc 
-   <br>March 2019
+Felix Le Hong Phuoc 
+<br>March 2019
 
 # Table of contents
 I. [**Overview**](#overview)
@@ -111,9 +111,7 @@ git pull origin master
 The above command will checkout only the `object_detection` directory in the TensorFlow models project. It is required to put the project script in the very same directory of `object_detection` directory.
 
 ## 2. Protobuf Installation <a name="protobuf"></a>
-<div style="text-align: justify">
 The TensorFlow object detection API uses *protobufs*, protocol buffers -- Google's data interchange format (https://github.com/protocolbuffers/protobuf), to configure the models and their training parameters. Before the framework can be used, the protobuf libraries must be compiled which requires different steps in a Unix or Window OS environment.
-<div>
 ### *Windows installation*:
 First, unpack the `protoc-3.4.0-win32.zip` that can be found at https://github.com/protocolbuffers/protobuf/releases?after=v3.4.1 into the project folder. Then add the `protoc-3.4.0-win32.zip` directory to the system path, and execute the following command:
 
