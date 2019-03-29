@@ -159,26 +159,9 @@ from object_detection.utils import visualization_utils as vis_util
 ```
 
 
-    ---------------------------------------------------------------------------
-
-    ModuleNotFoundError                       Traceback (most recent call last)
-
-    <ipython-input-5-3ec01baab5c2> in <module>()
-          2 import os
-          3 import numpy as np
-    ----> 4 import tensorflow as tf
-          5 import six.moves.urllib as urllib
-          6 import tarfile
-
-
-    ModuleNotFoundError: No module named 'tensorflow'
-
-
-<div style="text-align: justify">
 We define the `DetectionObj` class and its `init` procedure. The initialization expects only a parameter and the model name, but a few internal parameters can be changed to suit the use of the class:
 * **self.TARGET_PATH** pointing out the directory where the processed annotation will be saved
 * **self.THRESHOLD** fixing the probability threshold that will be noticed by the annotation processed. Any detection with confidence level less than this threshold will be ignored.
-<div>
 
 
 ```python
@@ -329,11 +312,9 @@ The two following functions, `load_image_from_disk` and `load_image_into_numpy_a
 ```
 
 ## 3. Detection, Annotation and Visualization <a name="detection"></a>
-<div style="text-align: justify">
 The `detect` function, instead, is the core of the classification functionality of the class. The function just expects lists of images to be processed. A Boolean flag, ***annotate_on_image***,  just tell the scripts to visualize the bounding box and the annotation directly on the provided images.
 <br/>We then take a few tensors in the model by name (***detection_boxes, detection_scores, detection_classes, num_detections***), and feed everything to the input tensor, ***image_tensor***, which will normalize the image in a suitable form for the layers of the model to process.
 <br>The results are gathered into a list and the images are processed with the detection boxes and represented if required:
-<div>
 
 
 ```python
@@ -379,9 +360,7 @@ The `detect` function, instead, is the core of the classification functionality 
 
 ```
 
-<div style="text-align: justify">
 The function `detection_on_image` just processes the results from the `detect` function and returns a new image enriched by bounding boxes. This image can be represented on screen by the function `visualize_image`.  You can adjust the time an image will stay on screen by tuning the ***latency*** parameter:
-<div>
 
 
 ```python
@@ -420,7 +399,7 @@ The function `detection_on_image` just processes the results from the `detect` f
         if bluish_correction: # bluish_correction: apply when image are offered in BGR format instead of RGB
             RGB_img = cv2.cvtColor(image_np, cv2.COLOR_BGR2RGB)
             cv2.imshow(id_img, RGB_img)
-        else:
+      Description   else:
             cv2.imshow(id_img, image_np)
         cv2.waitKey(latency*1000) # Adjust Latency value, which correspond to the seconds the image
         # will stay on screen before the script passes to process another image
@@ -472,14 +451,13 @@ The function `get_time` conveniently transform the actual time into a string tha
 ```
 
 ## 4. Pipelines <a name="pipeline"></a>
-<div style="text-align: justify">
 Finally we prepare three pipielines, for images, videos and webcams. 
 * ### For Images:<br/>   
 The `file_pipeline` function compires all the steps necessary to load images from storage and visualize/annotate them:
     1. Load images from disk
     2. Apply object detection on the loaded images
     3. Writting the annotations for each image in JSON file
-    4. If required by Boolean parameter ***visualize***, represent the images with its bounding boxes on the computer screen<div>
+    4. If required by Boolean parameter ***visualize***, represent the images with its bounding boxes on the computer screen
 
 
 ```python
@@ -538,14 +516,12 @@ The 'video_pipeline' lets the `VideoFileClip` module from `moviepy` do all the h
 ```
 
 * ### For Webcam:
-<div style="text-align: justify">
 <br>The `webcam_pipeline` is the function that arranges all the necessary steps to annotate an image acquired from webcam:
     1. Captures an image from the webcam through the `capture_webcam` function. As webcam have first to adjust to the light conditions present in the environment where the picture is taken, the procedure discard a number of initial shots, before taking the shots that will be used in the object detection procedure.
     2. Saves the captured image to disk using `cv2.imwrite`.
     3. Apply object detection on the image
     4. Save the annotation JSON file
     5. Represents visually the image with bounding boxes
-<div>
 
 
 ```python
@@ -668,13 +644,11 @@ By looking at the JSON file, you will discover that many other cars and pedestri
  "person", "person", "car", "car", "person", "car", "car", "car"]
 ```
 
-<div style="text-align: justify">
 When looking at the correponding class of the detected objects above, we can see that many cars have been spotted with lesser confidence. They actually may be cars in the image or error. Depending on the application of the Detection API, you may want to adjust the threshold or use another model to improve the accuracy of estimating an object.
 
 The model can detect quite a few number of persons and cars in the picture with a high confidence level. However, it could not recognize (or perhaps it recognized with a low confidence level) some obvious objects such as the big white and black cars, as well as the person in the left corner. 
-<div>
 
-* #### Detect all the dogs and cats in the room using `rfcn_resnet101_coco_11_06_2017` model
+* #### Detect all the dogsDescription  and cats in the room using `rfcn_resnet101_coco_11_06_2017` model
 (*Image source*: Chronicles of Cardigan https://www.chroniclesofcardigan.com/2011/10/whole-brood-minus-biped-in-one-room.html)
 
 ![dogs_cats](./sample_images/pets_room.jpg)
@@ -698,9 +672,7 @@ As can be seen in the picture above, almost every noticeable object in the livin
 
 ## 2. Annotating video with video_pipeline.py <a name="video"></a>
 
-<div style="text-align: justify">
 Applying detection to videos uses the same scripting approach. This time we point to the appropriate method, `video_pipeline`, the path to the video, and set whether the resulting video should have audio or not. In order to increase the accuracy of detection, we use the model **rfcn_resnet101_coco_11_06_2017** at the cost of a longer execution time. The script will do everything by itself, saving a modified and annotated video:
-<div>
 
 
 ```python
@@ -728,17 +700,12 @@ The original video and annotated videos are displayed below. To view the full vi
 
 ![annotated_swan_cross_road_rfcn](./sample_videos/annotated_swans_cross_road_rfcn.gif)
 
-
-<div style="text-align: justify">
 By comparing the two videos above, we can see that the `rfcn_resnet101_coco_11_06_2017` model produces a more comprehensive and detailed result of detection than the `ssd_mobilenet_v1_coco_11_06_2017` model. First of all, it can detect more objects in one time frame, especially the small and distant cars. Secondly, it can detect objects in complex shape that the`ssd_mobilenet_v1_coco_11_06_2017` can not realize, such as potted plant, hand bag and umbrella. Furthermore, it is able to detect the small white swans too while the `ssd_mobilenet_v1_coco_11_06_2017` can only "see" the big black swans.
 <br>This better performance is achieved at the cost of execution time. While it take less than one hour to compile the video using the `ssd_mobilenet_v1_coco_11_06_2017`, that time when using the `rfcn_resnet101_coco_11_06_2017`is more than four hours.
-<div>
 
 ## 3. Annotating screenshot captured by webcam with webcam_pipeline.py <a name="webcam_screenshot"></a>
 
-<div style="text-align: justify">
 Finally, we can also leverage exact the same approach for images acquired by a webcam using the method `webcam_pipeline`. The script will activate the webcam, adjust light, pick a snapshot, save the resulting snapshot and its annotation JSON fle in the current directory, and finally represent the snap shot on screen with bounding boxes on detected object: 
-<div>
 
 
 ```python
@@ -762,12 +729,9 @@ The results are shown below:
  ![annotated_webcam_snapshot](./webcam_images/annotated_webcam2019-03-07_10h53m28s.jpg)
 
 ## 4. Real-time webcam detection <a name="realtime_webcam"></a>
-
-<div style="text-align: justify">
 The previous `webcam_pipeline` is not a real-time detection system because it just takes snapshots and applies detection to the single taken image. This is a necessary limitation because dealing with webcam streaming requires intensive I/O data exchange. In particular, the problem is the queue of images arriving from the webcam to the Python interpreter that locks down Python until the transfer is completed. A solution based on threads to this problem is proposed by Adrian Rosebrock that you can read about at this Web address: https://www.pyimagesearch.com/2015/12/21/increasing-webcam-fps-with-python-and-opencv/
 
 The `realtime_webcam.py` below implements this solution using a **webcamStream** class that instantiates a thread for the webcam I/O, allowing the main Python program to always have at hand the latest received images, processed by the TensorFlow API using *ssd_mobilenet_v1_coco_11_06_2017* model. The processed image is plotted on the screen using OpenCv function, listening to the space bar keystroke in order to teminate the program. The recorded video will be saved at the target directory under specified format: 
-<div>
 
 
 ```python
@@ -851,25 +815,19 @@ The recorded video after running the above script is shown below:
 
 ![realtime_webcam](./webcam_videos/webcam2019-03-07_11h05m50s_final.gif)
 
-<div style="text-align: justify">
 In the video above, the author has tested the webcam detection function with several common objects. Most of them are recognized correctly with the accurate bounding boxes. Nevertheless, in order to achieve such high accuracy, the objects must be placed at a close distance in their "typical" form. For example, the scissors  has to be opened instead of closed, which applied to the book as well. Meanwhile, the apple is easily misclassifed with a donut due to their high similarity. This is a sign pointing out that the model needs to be improved at detecting one single object at different shapes and angles, as well as differentiating objects with high level of analogy.
-<div>
 
   # V. Limitations & Recommendations <a name="limitations"></a>
-  <div style="text-align: justify">
   Although the models we have discussed shows a fairly good result, they will soon be surpassed by newer and more eifficient ones. You can check the new availables models in this link: https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md.
  <br> Besides, if you want to incorporate new models or create your own architecture, you can get a reference here: https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/defining_your_own_model.md.
   <br> Finally, you may need to tune a ConvNet to recognize a new class, which can be done by following the instruction in this document: https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/using_your_own_dataset.md.
-<div>
   
   
 
 # VI. References <a name="references"></a>
-<div style="text-align: justify">
 1. Luca, Alberto, Alexey, Abhishek, Rajalingappaa (2018). *TensorFlow Deep Learning Projects*. Birmingham, UK: Packt Publishing Ltd.
 2. Joyce, X. (2017, Sep 11). *Deep Learning for Object Detection: A Comprehensive Review*. Retrieved from  https://towardsdatascience.com/deep-learning-for-object-detection-a-comprehensive-review-73930816d8d9
 3. Google Research Team & Contributors (2017). *TensorFlow Object Detection API*. Retrieved from  https://github.com/tensorflow/models/blob/master/research/object_detection/README.md.
 4. Adrian, R. (2015, Dec 21). *Increasing webcam FPS with Python and OpenCV*. Retrieved from https://www.pyimagesearch.com/2015/12/21/increasing-webcam-fps-with-python-and-opencv/.
 5. Jonathan et al. (2017). *Speed/accuracy trade-offs for modern convolutional object detectors*. Retrieved from https://arxiv.org/pdf/1611.10012.pdf.
 6. Dat, T. (2017, Jun 22). *Building a Real-Time Ojbect Recoginition App with TensorFlow and OpenCV*. Retrieved from https://towardsdatascience.com/building-a-real-time-object-recognition-app-with-tensorflow-and-opencv-b7a2b4ebdc32
-<div>
