@@ -654,9 +654,7 @@ The model can detect quite a few number of persons and cars in the picture with 
 ![dogs_cats](./sample_images/pets_room.jpg)
 
 ![dogs_cats_annotated](./sample_images/pets_room_annotated.jpg)
-<div style="text-align: justify">
 In this case, most of the big objects in the room have been captured, even the book and the chair under the table which are located in an inapparent position. Nevertheless, the model is not able to discern the two cats lying down on table and chair in the upper part of the picture. This can be explained as the cats are rolling themselves for sleeping, which appears to be an unsual shape of cat. These shapes can be easily confused with other objects such as pillows, bags or even rocks. Hence, we can say that the `rfcn_resnet101_coco_11_06_2017` produces a fair detection but needs to be improved at the capacity of detecting single object at multiple shapes.
-<div>
 
 * #### Detect objects in the living room using `faster_rcnn_inception_resnet_v2_atrous_coco_11_06_2017` model:
 
@@ -666,9 +664,7 @@ In this case, most of the big objects in the room have been captured, even the b
 
 
 ![living_room_annotated](./sample_images/living_room_annotated.jpg)
-<div style="text-align: justify">
 As can be seen in the picture above, almost every noticeable object in the living room have been spotted. In spite of the mixing and overlapping arrangements, the objects are still detected separately and accurately. Some objects such as the chairs and the vase are captured even when their colors are alike to the background color. The lamp on the right part of picture is missed probably because it's color is almost identical to the background behind.  Overall, the  `faster_rcnn_inception_resnet_v2_atrous_coco_11_06_2017` model produces a quite high  accuracy of object detecion.
-<div>
 
 ## 2. Annotating video with video_pipeline.py <a name="video"></a>
 
