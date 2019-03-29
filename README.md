@@ -686,15 +686,15 @@ The original video and annotated videos are displayed below. To view the full vi
 * #### Original `swan_cross_road` video: 
 (source: *Storyful Rights Management*: https://www.youtube.com/watch?v=tOMF4HLBCA0 )
 
-![swan_cross_road](./sample_videos/swan_cross_road.gif)
+[![swan_cross_road](./sample_videos/swans_cross_road.gif)](https://www.youtube.com/watch?v=tOMF4HLBCA0)
 
 * #### Annotated `swan_cross_road` video using `ssd_mobilenet_v1_coco_11_06_2017` model:
 
-![swan_cross_road_ssd](./sample_videos/annotated_swans_cross_road_ssd_mobile.gif)
+[![swan_cross_road_ssd](./sample_videos/annotated_swans_cross_road_ssd_mobile.gif)](./sample_videos/annotated_swans_cross_road_ssd_mobile.mp4)
 
 * #### Annotated `swan_cross_road` video using `rfcn_resnet101_coco_11_06_2017` model:
 
-![annotated_swan_cross_road_rfcn](./sample_videos/annotated_swans_cross_road_rfcn.gif)
+[![annotated_swan_cross_road_rfcn](./sample_videos/annotated_swans_cross_road_rfcn.gif)](./sample_videos/annotated_swans_cross_road_rfcn.mp4)
 
 By comparing the two videos above, we can see that the `rfcn_resnet101_coco_11_06_2017` model produces a more comprehensive and detailed result of detection than the `ssd_mobilenet_v1_coco_11_06_2017` model. First of all, it can detect more objects in one time frame, especially the small and distant cars. Secondly, it can detect objects in complex shape that the`ssd_mobilenet_v1_coco_11_06_2017` can not realize, such as potted plant, hand bag and umbrella. Furthermore, it is able to detect the small white swans too while the `ssd_mobilenet_v1_coco_11_06_2017` can only "see" the big black swans.
 <br>This better performance is achieved at the cost of execution time. While it take less than one hour to compile the video using the `ssd_mobilenet_v1_coco_11_06_2017`, that time when using the `rfcn_resnet101_coco_11_06_2017`is more than four hours.
