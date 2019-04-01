@@ -1,3 +1,3 @@
-theme: jekyll-theme-cayman
+theme: jekyll-theme-slate
 title: Annotating Images with TensorFlow Object Detection API
 description: This project presents a quick and easy way to detect, classify and localize objects in images and videos using the TensorFlow Object Detection API
