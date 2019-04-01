@@ -108,7 +108,7 @@ echo "research/object_detection/*" >> .git/info/sparse-checkout
 git pull origin master 
 ```
 
-The above command will checkout only the `object_detection` directory in the TensorFlow models project. It is required to put the project script in the very same directory of `object_detection` directory.
+The above command will checkout only the `object_detection` directory in the TensorFlow models project. It is required to put the project script in the very same directory of `object_detection` directory.https://login.microsoftonline.com/common/oauth2/logout
 
 ## 2. Protobuf Installation <a name="protobuf"></a>
 The TensorFlow object detection API uses *protobufs*, protocol buffers -- Google's data interchange format (https://github.com/protocolbuffers/protobuf), to configure the models and their training parameters. Before the framework can be used, the protobuf libraries must be compiled which requires different steps in a Unix or Window OS environment.
@@ -814,9 +814,10 @@ The recorded video after running the above script is shown below:
 In the video above, the author has tested the webcam detection function with several common objects. Most of them are recognized correctly with the accurate bounding boxes. Nevertheless, in order to achieve such high accuracy, the objects must be placed at a close distance in their "typical" form. For example, the scissors  has to be opened instead of closed, which applied to the book as well. Meanwhile, the apple is easily misclassifed with a donut due to their high similarity. This is a sign pointing out that the model needs to be improved at detecting one single object at different shapes and angles, as well as differentiating objects with high level of analogy.
 
 # V. Limitations & Recommendations <a name="limitations"></a>
-  Although the models we have discussed shows a fairly good result, they will soon be surpassed by newer and more eifficient ones. You can check the new availables models in this link: https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md.
- <br> Besides, if you want to incorporate new models or create your own architecture, you can get a reference here: https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/defining_your_own_model.md.
-  <br> Finally, you may need to tune a ConvNet to recognize a new class, which can be done by following the instruction in this document: https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/using_your_own_dataset.md.
+
+Although the models we have discussed shows a fairly good result, they will soon be surpassed by newer and more eifficient ones. You can check the new availables models in this link: https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md.
+<br>Besides, if you want to incorporate new models or create your own architecture, you can get a reference here: https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/defining_your_own_model.md.
+<br>Finally, you may need to tune a ConvNet to recognize a new class, which can be done by following the instruction in this document: https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/using_your_own_dataset.md.
   
   
 
