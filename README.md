@@ -46,14 +46,10 @@ If you wish to skip the methodology and proceed straight to the results and appl
 
 In order to achieve such classification and localization, we wil leverage the TensorFlow object detection  API. This is a Google's open source frame work built on top of TensorFlow which is focused on finding objects in images (estimating the chance that an object is in this position) and their bounding boxes. The framework offers some useful functions and these five pre-trained different models:
 
-   + Single Shot Multibox Detector (SSD) with MobileNets
-    
+   + Single Shot Multibox Detector (SSD) with MobileNets 
    + SSD with Interception V2
-
-   + Region-Based Fully Convolutional Networks (R-FCN) with Resnet 101
-   
-   + Faster R-CNN with Resnet 101
-   
+   + Region-Based Fully Convolutional Networks (R-FCN) with Resnet 101   
+   + Faster R-CNN with Resnet 101   
    + Faster R-CNN with Interception Resnet v2
 
 The model are in growing order of precision in detection and slower speed of execution of the detection process. **MobileNets, Inception** and **Resnet** refer to different types of Convolution Neural Network (CNN) architecture. **Single Shot Multibox Detector (SSD), Region Based Fully convolutional networks (R-FCN)** and **Faster Regioartificialn-based convolutional neural network (Faster R-CNN)** are instead the different models to detect multiple objects in images. A source of reference with more details about these detection models can be found [here](https://towardsdatascience.com/deep-learning-for-object-detection-a-comprehensive-review-73930816d8d9).
@@ -85,8 +81,6 @@ Let's first start by setting up an environment suitable for the project.
 # II. Preliminaries <a name="preliminaries"></a>
 ## 1. Setting up working environment  <a name ="setup"></a>
 For this project, a separated environment named *TensorFlow_api* is created using Anaconda *conda*. The commands in terminal are as follows:
-
-</div>
 
 ```shell
 conda create -n TensorFlow_api_2 python=3.5 numpy pillow requests pyparsing
@@ -842,3 +836,5 @@ Although the models we have discussed shows a fairly good result, they will soon
 4. Adrian, R. (2015, Dec 21). *Increasing webcam FPS with Python and OpenCV*. Retrieved from https://www.pyimagesearch.com/2015/12/21/increasing-webcam-fps-with-python-and-opencv/.
 5. Jonathan et al. (2017). *Speed/accuracy trade-offs for modern convolutional object detectors*. Retrieved from https://arxiv.org/pdf/1611.10012.pdf.
 6. Dat, T. (2017, Jun 22). *Building a Real-Time Ojbect Recoginition App with TensorFlow and OpenCV*. Retrieved from https://towardsdatascience.com/building-a-real-time-object-recognition-app-with-tensorflow-and-opencv-b7a2b4ebdc32
+
+</div>
