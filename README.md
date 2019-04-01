@@ -34,7 +34,7 @@ VI. [**References**](#references)
 
 # I. Overview <a name="overview"></a>
 ## 1.Problem Description <a name="problem_description"></a>
-<p align="justify">
+<p align="justify" markdown="1">
 Computer vision has made great leaps forward in recent years because of deep learning, thus granting computers a higher grade in understanding visual scenes. The potentialities of deep learning in vision tasks are great: allowing a computer to visually perceive and understand its surrounding is a capability that opens the door to new artificial intelligence applications in mobility, manufacturing, healthcare and many other human-machine interaction contexts. For instance, self-driving cars can detect if an appearing obstacle is a pedestrian, an animal or another vehicle from the camera mounted on it and decide the correct course of action. Meanwhile, a robot with "seeing" capability can recognize surrounding objects and successfully interact with them.
    
 This project presents a quick and handy way to make computer understand images and videos collected from the Internet or directly taken from webcam. The goal of this project is to find the exact location and the type of the objects in an image.
@@ -109,7 +109,6 @@ In case you prefer another way of running this project, please make sure that yo
 * cuDNN v6.0
 
 The next step is to download the the Tensor-FLow object detection API progject using Git
-
 
 ```shell
 mkdir api_project
