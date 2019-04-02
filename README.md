@@ -121,7 +121,7 @@ The above command will checkout only the `object_detection` directory in the Ten
 ## 2. Protobuf Installation <a name="protobuf"></a>
 The TensorFlow object detection API uses *protobufs*, protocol buffers -- Google's data interchange format (<https://github.com/protocolbuffers/protobuf>), to configure the models and their training parameters. Before the framework can be used, the protobuf libraries must be compiled which requires different steps in a Unix or Window OS environment.
 ### *Windows installation*:
-First, unpack the `protoc-3.4.0-win32.zip` that can be found at https://github.com/protocolbuffers/protobuf/releases?after=v3.4.1 into the project folder. Then add the `protoc-3.4.0-win32.zip` directory to the system path, and execute the following command:
+First, unpack the `protoc-3.4.0-win32.zip` that can be found at <https://github.com/protocolbuffers/protobuf/releases?after=v3.4.1> into the project folder. Then add the `protoc-3.4.0-win32.zip` directory to the system path, and execute the following command:
 
 ```shell
 protoc-3.4.0-win32/bin/protoc.ext object_detection/protos/\*.proto --python_out=.
@@ -129,7 +129,7 @@ protoc-3.4.0-win32/bin/protoc.ext object_detection/protos/\*.proto --python_out=
 
 ### *Unix Installation*
 
-For Unix environments, the installation procedure can be done using shell command as described in the following instruction: https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md
+For Unix environments, the installation procedure can be done using shell command as described in the following instruction: <https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md>
 
 
 # III. Provisioning of the project code <a name="provision"></a>
@@ -368,7 +368,7 @@ The `detect` function, instead, is the core of the classification functionality 
 
 ```
 
-The function `detection_on_image` just processes the results from the `detect` function and returns a new image enriched by bounding boxes. This image can be represented on screen by the function `visualize_image`.  You can adjust the time an image will stay on screen by tuning the ***latency*** parameter:
+The function `detection_on_image` just processes the results from the `detect` function and returns a new image enriched by bounding boxes. This image can be represented on screen by the function `visualize_image`.  You can adjust the time an image will stay on screen by tuning the ***latency*** parameter:https://www.google.com/search?client=ubuntu&channel=fs&q=insert+link+github+readme.md&ie=utf-8&oe=utf-8
 
 
 ```python
@@ -657,7 +657,7 @@ When looking at the correponding class of the detected objects above, we can see
 The model can detect quite a few number of persons and cars in the picture with a high confidence level. However, it could not recognize (or perhaps it recognized with a low confidence level) some obvious objects such as the big white and black cars, as well as the person in the left corner. 
 
 * #### Detect all the dogsDescription  and cats in the room using `rfcn_resnet101_coco_11_06_2017` model
-(*Image source*: Chronicles of Cardigan https://www.chroniclesofcardigan.com/2011/10/whole-brood-minus-biped-in-one-room.html)
+(*Image source*: Chronicles of Cardigan <https://www.chroniclesofcardigan.com/2011/10/whole-brood-minus-biped-in-one-room.html>)
 
 ![dogs_cats](./sample_images/pets_room.jpg)
 
@@ -666,7 +666,7 @@ In this case, most of the big objects in the room have been captured, even the b
 
 * #### Detect objects in the living room using `faster_rcnn_inception_resnet_v2_atrous_coco_11_06_2017` model:
 
-(*Image source*: SNDESIGZ http://www.sn-desigz.com/working-small-living-room.html)
+(*Image source*: SNDESIGZ <http://www.sn-desigz.com/working-small-living-room.html>)
 
 ![living_room](./sample_images/living_room.jpg)
 
@@ -692,7 +692,7 @@ if __name__ == "__main__":
 The original video and annotated videos are displayed below. To view the full video, please click on the GIF picture:
 
 * #### Original `swan_cross_road` video: 
-   (source: *Storyful Rights Management*: https://www.youtube.com/watch?v=tOMF4HLBCA0 )
+   (source: *Storyful Rights Management*: <https://www.youtube.com/watch?v=tOMF4HLBCA0>)
 
    <img align="center" src="./sample_videos/swans_cross_road.gif"/>
 
@@ -728,7 +728,7 @@ The results are shown below:
 <img align="center" src="./webcam_images/annotated_webcam2019-03-07_10h53m28s.jpg"/>  
 
 ## 4. Real-time webcam detection <a name="realtime_webcam"></a>
-The previous `webcam_pipeline` is not a real-time detection system because it just takes snapshots and applies detection to the single taken image. This is a necessary limitation because dealing with webcam streaming requires intensive I/O data exchange. In particular, the problem is the queue of images arriving from the webcam to the Python interpreter that locks down Python until the transfer is completed. A solution based on threads to this problem is proposed by Adrian Rosebrock that you can read about at this Web address: https://www.pyimagesearch.com/2015/12/21/increasing-webcam-fps-with-python-and-opencv/
+The previous `webcam_pipeline` is not a real-time detection system because it just takes snapshots and applies detection to the single taken image. This is a necessary limitation because dealing with webcam streaming requires intensive I/O data exchange. In particular, the problem is the queue of images arriving from the webcam to the Python interpreter that locks down Python until the transfer is completed. A solution based on threads to this problem is proposed by Adrian Rosebrock that you can read about at this Web address: <https://www.pyimagesearch.com/2015/12/21/increasing-webcam-fps-with-python-and-opencv/>
 
 The `realtime_webcam.py` below implements this solution using a **webcamStream** class that instantiates a thread for the webcam I/O, allowing the main Python program to always have at hand the latest received images, processed by the TensorFlow API using *ssd_mobilenet_v1_coco_11_06_2017* model. The processed image is plotted on the screen using OpenCv function, listening to the space bar keystroke in order to teminate the program. The recorded video will be saved at the target directory under specified format: 
 
@@ -810,26 +810,26 @@ if __name__ == "__main__":
 
 ```
 
-The recorded video after running the above script is shown below:
+   The recorded video after running the above script is shown below:
 
-<img align="center" src="./webcam_videos/webcam2019-03-07_11h05m50s_final.gif"/>
+   <img align="center" src="./webcam_videos/webcam2019-03-07_11h05m50s_final.gif"/>
 
 In the video above, the author has tested the webcam detection function with several common objects. Most of them are recognized correctly with the accurate bounding boxes. Nevertheless, in order to achieve such high accuracy, the objects must be placed at a close distance in their "typical" form. For example, the scissors  has to be opened instead of closed, which applied to the book as well. Meanwhile, the apple is easily misclassifed with a donut due to their high similarity. This is a sign pointing out that the model needs to be improved at detecting one single object at different shapes and angles, as well as differentiating objects with high level of analogy.
 
 # V. Limitations & Recommendations <a name="limitations"></a>
 
-Although the models we have discussed shows a fairly good result, they will soon be surpassed by newer and more eifficient ones. You can check the new availables models in this link: https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md.
-<br>Besides, if you want to incorporate new models or create your own architecture, you can get a reference here: https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/defining_your_own_model.md.
-<br>Finally, you may need to tune a ConvNet to recognize a new class, which can be done by following the instruction in this document: https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/using_your_own_dataset.md.
+Although the models we have discussed shows a fairly good result, they will soon be surpassed by newer and more eifficient ones. You can check the new availables models in this link: <https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md>.
+<br>Besides, if you want to incorporate new models or create your own architecture, you can get a reference here: <https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/defining_your_own_model.md>.
+<br>Finally, you may need to tune a ConvNet to recognize a new class, which can be done by following the instruction in this document: <https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/using_your_own_dataset.md>.
   
   
 
 # VI. References <a name="references"></a>
 1. Luca, Alberto, Alexey, Abhishek, Rajalingappaa (2018). *TensorFlow Deep Learning Projects*. Birmingham, UK: Packt Publishing Ltd.
-2. Joyce, X. (2017, Sep 11). *Deep Learning for Object Detection: A Comprehensive Review*. Retrieved from  https://towardsdatascience.com/deep-learning-for-object-detection-a-comprehensive-review-73930816d8d9
-3. Google Research Team & Contributors (2017). *TensorFlow Object Detection API*. Retrieved from  https://github.com/tensorflow/models/blob/master/research/object_detection/README.md.
-4. Adrian, R. (2015, Dec 21). *Increasing webcam FPS with Python and OpenCV*. Retrieved from https://www.pyimagesearch.com/2015/12/21/increasing-webcam-fps-with-python-and-opencv/.
-5. Jonathan et al. (2017). *Speed/accuracy trade-offs for modern convolutional object detectors*. Retrieved from https://arxiv.org/pdf/1611.10012.pdf.
-6. Dat, T. (2017, Jun 22). *Building a Real-Time Ojbect Recoginition App with TensorFlow and OpenCV*. Retrieved from https://towardsdatascience.com/building-a-real-time-object-recognition-app-with-tensorflow-and-opencv-b7a2b4ebdc32
+2. Joyce, X. (2017, Sep 11). *Deep Learning for Object Detection: A Comprehensive Review*. Retrieved from  <https://towardsdatascience.com/deep-learning-for-object-detection-a-comprehensive-review-73930816d8d9>
+3. Google Research Team & Contributors (2017). *TensorFlow Object Detection API*. Retrieved from  <https://github.com/tensorflow/models/blob/master/research/object_detection/README.md>.
+4. Adrian, R. (2015, Dec 21). *Increasing webcam FPS with Python and OpenCV*. Retrieved from <https://www.pyimagesearch.com/2015/12/21/increasing-webcam-fps-with-python-and-opencv/>.
+5. Jonathan et al. (2017). *Speed/accuracy trade-offs for modern convolutional object detectors*. Retrieved from <https://arxiv.org/pdf/1611.10012.pdf>.
+6. Dat, T. (2017, Jun 22). *Building a Real-Time Ojbect Recoginition App with TensorFlow and OpenCV*. Retrieved from <https://towardsdatascience.com/building-a-real-time-object-recognition-app-with-tensorflow-and-opencv-b7a2b4ebdc32>
 
 </div>
