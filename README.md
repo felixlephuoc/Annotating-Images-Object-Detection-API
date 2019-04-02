@@ -620,11 +620,13 @@ After running the script, all three images in the **sample_images** directory wi
 First, lets take a look at the original and annotated images in three differenct scenarios:
 
 * #### Detect human and vehicles at the intersection using `ssd_mobilenet_v1_coco_11_06_2017` model:
+<div style="text-align: center" markdown=1>
 
 ![intersection](./sample_images/intersection.jpg)
 
 ![intersection](./sample_images/intersection_annotated.jpg)
 
+</div>
 In the visualization, you will see all the bounding boxes relative to object whose prediction confidence is above 0.5. You will notice that, in the case of annotated image with intersection, not all cars and pedestrians habe been spotted by the model.
 
 By looking at the JSON file, you will discover that many other cars and pedestrians have been located by the model, though with lesser confidence. In the file, you will find all the objects detected with at least 0.25 confidence, a threshold which represents a common standard in may studies on object detection. For example, in the `intersection.jpg.json` file, only eight detected objects are above the visualization threshold of 0.5, whereas 16 other objects has lesser scores:
@@ -693,6 +695,7 @@ The original video and annotated videos are displayed below. To view the full vi
 
 * #### Original `swan_cross_road` video: 
 (source: *Storyful Rights Management*: https://www.youtube.com/watch?v=tOMF4HLBCA0 )
+<div style="text-align: center" markdown=1>
 
 [![swan_cross_road](./sample_videos/swans_cross_road.gif)](https://www.youtube.com/watch?v=tOMF4HLBCA0)
 
@@ -704,6 +707,7 @@ The original video and annotated videos are displayed below. To view the full vi
 
 [![annotated_swan_cross_road_rfcn](./sample_videos/annotated_swans_cross_road_rfcn.gif)](./sample_videos/annotated_swans_cross_road_rfcn.mp4)
 
+</div>
 By comparing the two videos above, we can see that the `rfcn_resnet101_coco_11_06_2017` model produces a more comprehensive and detailed result of detection than the `ssd_mobilenet_v1_coco_11_06_2017` model. First of all, it can detect more objects in one time frame, especially the small and distant cars. Secondly, it can detect objects in complex shape that the`ssd_mobilenet_v1_coco_11_06_2017` can not realize, such as potted plant, hand bag and umbrella. Furthermore, it is able to detect the small white swans too while the `ssd_mobilenet_v1_coco_11_06_2017` can only "see" the big black swans.
 <br>This better performance is achieved at the cost of execution time. While it take less than one hour to compile the video using the `ssd_mobilenet_v1_coco_11_06_2017`, that time when using the `rfcn_resnet101_coco_11_06_2017`is more than four hours.
 
@@ -816,9 +820,11 @@ if __name__ == "__main__":
 ```
 
 The recorded video after running the above script is shown below:
+<div style="text-align: center" markdown=1>
 
 ![realtime_webcam](./webcam_videos/webcam2019-03-07_11h05m50s_final.gif)
 
+</div>
 In the video above, the author has tested the webcam detection function with several common objects. Most of them are recognized correctly with the accurate bounding boxes. Nevertheless, in order to achieve such high accuracy, the objects must be placed at a close distance in their "typical" form. For example, the scissors  has to be opened instead of closed, which applied to the book as well. Meanwhile, the apple is easily misclassifed with a donut due to their high similarity. This is a sign pointing out that the model needs to be improved at detecting one single object at different shapes and angles, as well as differentiating objects with high level of analogy.
 
 # V. Limitations & Recommendations <a name="limitations"></a>
