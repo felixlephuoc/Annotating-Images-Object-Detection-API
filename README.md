@@ -724,13 +724,10 @@ if __name__=="__main__":
 
 The results are shown below:
  * #### Original webcam snapshot:
- 
- ![webcam_snapshot](./webcam_images/webcam2019-03-07_10h53m28s.jpg)
- 
- * #### Annotated webcam snapshot:
- 
-  
- ![annotated_webcam_snapshot](./webcam_images/annotated_webcam2019-03-07_10h53m28s.jpg)
+ <img align="center" src="./webcam_images/webcam2019-03-07_10h53m28s.jpg"/>
+
+* #### Annotated webcam snapshot:
+<img align="center" src="./webcam_images/annotated_webcam2019-03-07_10h53m28s.jpg"/>  
 
 ## 4. Real-time webcam detection <a name="realtime_webcam"></a>
 The previous `webcam_pipeline` is not a real-time detection system because it just takes snapshots and applies detection to the single taken image. This is a necessary limitation because dealing with webcam streaming requires intensive I/O data exchange. In particular, the problem is the queue of images arriving from the webcam to the Python interpreter that locks down Python until the transfer is completed. A solution based on threads to this problem is proposed by Adrian Rosebrock that you can read about at this Web address: https://www.pyimagesearch.com/2015/12/21/increasing-webcam-fps-with-python-and-opencv/
@@ -816,11 +813,9 @@ if __name__ == "__main__":
 ```
 
 The recorded video after running the above script is shown below:
-<div style="text-align: center" markdown=1>
 
-![realtime_webcam](./webcam_videos/webcam2019-03-07_11h05m50s_final.gif)
+<img align="center" src="./webcam_videos/webcam2019-03-07_11h05m50s_final.gif"/>
 
-</div>
 In the video above, the author has tested the webcam detection function with several common objects. Most of them are recognized correctly with the accurate bounding boxes. Nevertheless, in order to achieve such high accuracy, the objects must be placed at a close distance in their "typical" form. For example, the scissors  has to be opened instead of closed, which applied to the book as well. Meanwhile, the apple is easily misclassifed with a donut due to their high similarity. This is a sign pointing out that the model needs to be improved at detecting one single object at different shapes and angles, as well as differentiating objects with high level of analogy.
 
 # V. Limitations & Recommendations <a name="limitations"></a>
