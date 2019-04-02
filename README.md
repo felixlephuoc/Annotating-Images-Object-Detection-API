@@ -620,13 +620,11 @@ After running the script, all three images in the **sample_images** directory wi
 First, lets take a look at the original and annotated images in three differenct scenarios:
 
 * #### Detect human and vehicles at the intersection using `ssd_mobilenet_v1_coco_11_06_2017` model:
-<div style="text-align: center" markdown=1>
 
 ![intersection](./sample_images/intersection.jpg)
 
 ![intersection](./sample_images/intersection_annotated.jpg)
 
-</div>
 In the visualization, you will see all the bounding boxes relative to object whose prediction confidence is above 0.5. You will notice that, in the case of annotated image with intersection, not all cars and pedestrians habe been spotted by the model.
 
 By looking at the JSON file, you will discover that many other cars and pedestrians have been located by the model, though with lesser confidence. In the file, you will find all the objects detected with at least 0.25 confidence, a threshold which represents a common standard in may studies on object detection. For example, in the `intersection.jpg.json` file, only eight detected objects are above the visualization threshold of 0.5, whereas 16 other objects has lesser scores:
