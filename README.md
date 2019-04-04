@@ -1,7 +1,4 @@
 
-
-# Annotating Images with TensorFlow Object Detection API 
-   
 Felix Le Hong Phuoc 
 <br>March 2019
 
@@ -40,7 +37,6 @@ Computer vision has made great leaps forward in recent years because of deep lea
 This project presents a quick and handy way to make computer understand images and videos collected from the Internet or directly taken from webcam. The goal of this project is to find the exact location and the type of the objects in an image.
 
 If you wish to skip the methodology and proceed straight to the results and applications, plese click [here](#result).
-
 ## 2. Tensorflow Object Detection API <a name="object_detection_api"></a>
 
 In order to achieve such classification and localization, we wil leverage the TensorFlow object detection  API. This is a Google's open source frame work built on top of TensorFlow which is focused on finding objects in images (estimating the chance that an object is in this position) and their bounding boxes. The framework offers some useful functions and these five pre-trained different models:
@@ -52,7 +48,6 @@ In order to achieve such classification and localization, we wil leverage the Te
    + Faster R-CNN with Interception Resnet v2
 
 The model are in growing order of precision in detection and slower speed of execution of the detection process. **MobileNets, Inception** and **Resnet** refer to different types of Convolution Neural Network (CNN) architecture. **Single Shot Multibox Detector (SSD), Region Based Fully convolutional networks (R-FCN)** and **Faster Regioartificialn-based convolutional neural network (Faster R-CNN)** are instead the different models to detect multiple objects in images. A source of reference with more details about these detection models can be found [here](https://towardsdatascience.com/deep-learning-for-object-detection-a-comprehensive-review-73930816d8d9).
-
 ## 3. Annotating Image <a name="annotating_image"></a>
 
 Given such a powerful tool made available by TensorFlow, our plan is to leverage its API by creating a class you can use for annotating images both visually and in an external file. By annotating we mean the following:
@@ -70,7 +65,6 @@ In order to achieve such objectives, we need to:
    3. Prepare a simple Provisioning of the project code script sto demonstrate its uage with single images, videos and videos captured from a webcam
    
 Let's first start by setting up an environment suitable for the project.
-
 # II. Preliminaries <a name="preliminaries"></a>
 ## 1. Setting up working environment  <a name ="setup"></a>
 For this project, a separated environment named **TensorFlow_api** is created using Anaconda *conda*. The commands in terminal are as follows:
@@ -106,7 +100,6 @@ echo "research/object_detection/*" >> .git/info/sparse-checkout
 git pull origin master 
 ```
 The above command will checkout only the **`object_detection`** directory in the TensorFlow models project. It is required to put the project script in the very same directory of **`object_detection`** directory.
-
 ## 2. Protobuf Installation <a name="protobuf"></a>
 The TensorFlow object detection API uses *protobufs*, protocol buffers -- Google's data interchange format (<https://github.com/protocolbuffers/protobuf>), to configure the models and their training parameters. Before the framework can be used, the protobuf libraries must be compiled which requires different steps in a Unix or Window OS environment.
 ### *Windows installation*:
@@ -116,8 +109,7 @@ First, unpack the *protoc-3.4.0-win32.zip* that can be found at <https://github.
 protoc-3.4.0-win32/bin/protoc.ext object_detection/protos/\*.proto --python_out=.
 ```
 ### *Unix Installation*
-For Unix environments, the installation procedure can be done using shell command as described in the following instruction: <https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md>
-
+For Unix environments, the installation procedure can be done using shell command as described in the following instruction: <https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md>.
 # III. Provisioning of the project code <a name="provision"></a>
 ## 1. Class Initialization <a name="class_init"></a>
 We start scripting our project in the file **`tensorflow_detection.py`** by loading the necessary package:
@@ -213,7 +205,6 @@ class DetectionObj(object):
         self.TF_SESSION = tf.Session(graph=self.DETECTION_GRAPH)
       
 ```
-
 ## 2. Loading Model and Images <a name="loading"></a>
 The functions **`load_frozen_model`** and **`download_frozen_model`** will help the **`init`** procedure to load the chosen frozen model from the disk. If the model is not available locally, it will be downloaded as a TAR file and unzip the proper directory.
 
@@ -296,7 +287,6 @@ The two following functions, **`load_image_from_disk`** and **`load_image_into_n
             return image
         
 ```
-
 ## 3. Detection, Annotation and Visualization <a name="detection"></a>
 The **`detect`** function, instead, is the core of the classification functionality of the class. The function just expects lists of images to be processed. A Boolean flag, ***annotate_on_image***,  just tell the scripts to visualize the bounding box and the annotation directly on the provided images.
 <br/>We then take a few tensors in the model by name (***detection_boxes, detection_scores, detection_classes, num_detections***), and feed everything to the input tensor, ***image_tensor***, which will normalize the image in a suitable form for the layers of the model to process.
@@ -344,7 +334,7 @@ The **`detect`** function, instead, is the core of the classification functional
         return results
 
 ```
-The function **`detection_on_image`** just processes the results from the **`detect`** function and returns a new image enriched by bounding boxes. This image can be represented on screen by the function **`visualize_image`**.  You can adjust the time an image will stay on screen by tuning the ***latency*** parameter:https://www.google.com/search?client=ubuntu&channel=fs&q=insert+link+github+readme.md&ie=utf-8&oe=utf-8
+The function **`detection_on_image`** just processes the results from the **`detect`** function and returns a new image enriched by bounding boxes. This image can be represented on screen by the function **`visualize_image`**.  You can adjust the time an image will stay on screen by tuning the ***latency*** parameter.
 
 ```python
    
@@ -430,7 +420,6 @@ The function **`get_time`** conveniently transform the actual time into a string
         return strftime("%Y-%m-%d_%Hh%Mm%Ss", gmtime())
     
 ```
-
 ## 4. Pipelines <a name="pipeline"></a>
 Finally we prepare three pipielines, for images, videos and webcams. 
 * ### For Images:<br/>   
@@ -564,11 +553,9 @@ Finally, we complete define the **`Object_detection`** class
 if __name__ == "__main__":
     pass
 ```
-
 # IV. Result and Applicatitons <a name="result"></a>
 As a concluding paragraph of the code provisioning, we demonstrate just three scripts leveraging the three different sources used by our project: files, videos, webcam.
-
-## 1. Annotating images with `file_pipeline.py` <a name="image"></a>
+## 1. Annotating images with file_pipeline.py <a name="image"></a>
 
 Our first testing script aims at annotating and visualizing three images after importing the class **DetectionObj** from the local directory. Then we activate the class, declaring it using the **SSD MobileNet v1** model. After that, we have to put the path to every single image into a list and feed it to the method **`file_pipeline`** as follow:
 
@@ -623,7 +610,7 @@ When looking at the correponding class of the detected objects above, we can see
 
 The model can detect quite a few number of persons and cars in the picture with a high confidence level. However, it could not recognize (or perhaps it recognized with a low confidence level) some obvious objects such as the big white and black cars, as well as the person in the left corner. 
 
-* #### Detect all the dogsDescription  and cats in the room using **`rfcn_resnet101_coco_11_06_2017`** model
+* #### Detect all the dogsDescription  and cats in the room using **rfcn_resnet101_coco_11_06_2017** model
 (*Image source*: Chronicles of Cardigan <https://www.chroniclesofcardigan.com/2011/10/whole-brood-minus-biped-in-one-room.html>)
 
 ![dogs_cats](./sample_images/pets_room.jpg)
@@ -631,7 +618,7 @@ The model can detect quite a few number of persons and cars in the picture with 
 ![dogs_cats_annotated](./sample_images/pets_room_annotated.jpg)
 In this case, most of the big objects in the room have been captured, even the book and the chair under the table which are located in an inapparent position. Nevertheless, the model is not able to discern the two cats lying down on table and chair in the upper part of the picture. This can be explained as the cats are rolling themselves for sleeping, which appears to be an unsual shape of cat. These shapes can be easily confused with other objects such as pillows, bags or even rocks. Hence, we can say that the **rfcn_resnet101_coco_11_06_2017** produces a fair detection but needs to be improved at the capacity of detecting single object at multiple shapes.
 
-* #### Detect objects in the living room using **`faster_rcnn_inception_resnet_v2_atrous_coco_11_06_2017`** model:
+* #### Detect objects in the living room using **faster_rcnn_inception_resnet_v2_atrous_coco_11_06_2017** model:
 
 (*Image source*: SNDESIGZ <http://www.sn-desigz.com/working-small-living-room.html>)
 
@@ -640,8 +627,7 @@ In this case, most of the big objects in the room have been captured, even the b
 ![living_room_annotated](./sample_images/living_room_annotated.jpg)
 
 As can be seen in the picture above, almost every noticeable object in the living room have been spotted. In spite of the mixing and overlapping arrangements, the objects are still detected separately and accurately. Some objects such as the chairs and the vase are captured even when their colors are alike to the background color. The lamp on the right part of picture is missed probably because it's color is almost identical to the background behind.  Overall, the  **faster_rcnn_inception_resnet_v2_atrous_coco_11_06_2017** model produces a quite high  accuracy of object detecion.
-
-## 2. Annotating video with `video_pipeline.py` <a name="video"></a>
+## 2. Annotating video with video_pipeline.py <a name="video"></a>
 
 Applying detection to videos uses the same scripting approach. This time we point to the appropriate method, **`video_pipeline`**, the path to the video, and set whether the resulting video should have audio or not. In order to increase the accuracy of detection, we use the model **rfcn_resnet101_coco_11_06_2017** at the cost of a longer execution time. The script will do everything by itself, saving a modified and annotated video:
 
@@ -670,7 +656,6 @@ The original video and annotated videos are displayed below. To view the full vi
 By comparing the two videos above, we can see that the **rfcn_resnet101_coco_11_06_2017** model produces a more comprehensive and detailed result of detection than the **ssd_mobilenet_v1_coco_11_06_2017** model. First of all, it can detect more objects in one time frame, especially the small and distant cars. Secondly, it can detect objects in complex shape that the **ssd_mobilenet_v1_coco_11_06_2017** can not realize, such as potted plant, hand bag and umbrella. Furthermore, it is able to detect the small white swans too while the **ssd_mobilenet_v1_coco_11_06_2017** can only "see" the big black swans.
 
 This better performance is achieved at the cost of execution time. While it take less than one hour to compile the video using the **ssd_mobilenet_v1_coco_11_06_2017**, that time when using the **rfcn_resnet101_coco_11_06_2017** is more than four hours.
-
 ## 3. Annotating screenshot captured by webcam with webcam_pipeline.py <a name="webcam_screenshot"></a>
 
 Finally, we can also leverage exact the same approach for images acquired by a webcam using the method **`webcam_pipeline`**. The script will activate the webcam, adjust light, pick a snapshot, save the resulting snapshot and its annotation JSON fle in the current directory, and finally represent the snap shot on screen with bounding boxes on detected object: 
@@ -691,7 +676,6 @@ The results are shown below:
 
 * #### Annotated webcam snapshot:
 <img align="center" src="./webcam_images/annotated_webcam2019-03-07_10h53m28s.jpg"/>  
-
 ## 4. Real-time webcam detection <a name="realtime_webcam"></a>
 The previous **`webcam_pipeline`** is not a real-time detection system because it just takes snapshots and applies detection to the single taken image. This is a necessary limitation because dealing with webcam streaming requires intensive I/O data exchange. In particular, the problem is the queue of images arriving from the webcam to the Python interpreter that locks down Python until the transfer is completed. A solution based on threads to this problem is proposed by Adrian Rosebrock that you can read about at this Web address: <https://www.pyimagesearch.com/2015/12/21/increasing-webcam-fps-with-python-and-opencv/>
 
@@ -777,13 +761,11 @@ if __name__ == "__main__":
    <img align="center" src="./webcam_videos/webcam2019-03-07_11h05m50s_final.gif"/>
 
 In the video above, the author has tested the webcam detection function with several common objects. Most of them are recognized correctly with the accurate bounding boxes. Nevertheless, in order to achieve such high accuracy, the objects must be placed at a close distance in their "typical" form. For example, the scissors  has to be opened instead of closed, which applied to the book as well. Meanwhile, the apple is easily misclassifed with a donut due to their high similarity. This is a sign pointing out that the model needs to be improved at detecting one single object at different shapes and angles, as well as differentiating objects with high level of analogy.
-
 # V. Limitations & Recommendations <a name="limitations"></a>
 
 Although the models we have discussed shows a fairly good result, they will soon be surpassed by newer and more eifficient ones. You can check the new availables models in this link: <https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md>.
 <br>Besides, if you want to incorporate new models or create your own architecture, you can get a reference here: <https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/defining_your_own_model.md>.
-<br>Finally, you may need to tune a ConvNet to recognize a new class, which can be done by following the instruction in this document: <https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/using_your_own_dataset.md>.
-  
+<br>Finally, you may need to tune a ConvNet to recognize a new class, which can be done by following the instruction in this document: <https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/using_your_own_dataset.md>.  
 # VI. References <a name="references"></a>
 1. Luca, Alberto, Alexey, Abhishek, Rajalingappaa (2018). *TensorFlow Deep Learning Projects*. Birmingham, UK: Packt Publishing Ltd.
 2. Joyce, X. (2017, Sep 11). *Deep Learning for Object Detection: A Comprehensive Review*. Retrieved from  <https://towardsdatascience.com/deep-learning-for-object-detection-a-comprehensive-review-73930816d8d9>
