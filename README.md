@@ -101,15 +101,15 @@ git pull origin master
 ```
 The above command will checkout only the **`object_detection`** directory in the TensorFlow models project. It is required to put the project script in the very same directory of **`object_detection`** directory.
 ## 2. Protobuf Installation <a name="protobuf"></a>
-The TensorFlow object detection API uses *protobufs*, protocol buffers -- Google's data interchange format (<https://github.com/protocolbuffers/protobuf>), to configure the models and their training parameters. Before the framework can be used, the protobuf libraries must be compiled which requires different steps in a Unix or Window OS environment.
+The TensorFlow object detection API uses ![*protobufs*](https://github.com/protocolbuffers/protobuf), which is protocol buffers - a Google's data interchange format, to configure the models and their training parameters. Before the framework can be used, the protobuf libraries must be compiled which requires different steps in a Unix or Window OS environment.
 ### *Windows installation*:
-First, unpack the *protoc-3.4.0-win32.zip* that can be found at <https://github.com/protocolbuffers/protobuf/releases?after=v3.4.1> into the project folder. Then add the *protoc-3.4.0-win32.zip* directory to the system path, and execute the following command:
+First, unpack the *protoc-3.4.0-win32.zip* that can be found at ![this link](https://github.com/protocolbuffers/protobuf/releases?after=v3.4.1) into the project folder. Then add the *protoc-3.4.0-win32.zip* directory to the system path, and execute the following command:
 
 ```shell
 protoc-3.4.0-win32/bin/protoc.ext object_detection/protos/\*.proto --python_out=.
 ```
 ### *Unix Installation*
-For Unix environments, the installation procedure can be done using shell command as described in the following instruction: <https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md>.
+For Unix environments, the installation procedure can be done using shell command as described in the following ![instruction](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md).
 # III. Provisioning of the project code <a name="provision"></a>
 ## 1. Class Initialization <a name="class_init"></a>
 We start scripting our project in the file **`tensorflow_detection.py`** by loading the necessary package:
@@ -610,19 +610,19 @@ When looking at the correponding class of the detected objects above, we can see
 
 The model can detect quite a few number of persons and cars in the picture with a high confidence level. However, it could not recognize (or perhaps it recognized with a low confidence level) some obvious objects such as the big white and black cars, as well as the person in the left corner. 
 
-* #### Detect all the dogsDescription  and cats in the room using **rfcn_resnet101_coco_11_06_2017** model
-(*Image source*: Chronicles of Cardigan <https://www.chroniclesofcardigan.com/2011/10/whole-brood-minus-biped-in-one-room.html>)
+* #### Detect all the dogs and cats in the room using **rfcn_resnet101_coco_11_06_2017** model
 
 ![dogs_cats](./sample_images/pets_room.jpg)
+
+(*Image source*: Chronicles of Cardigan <https://www.chroniclesofcardigan.com/2011/10/whole-brood-minus-biped-in-one-room.html>)
 
 ![dogs_cats_annotated](./sample_images/pets_room_annotated.jpg)
 In this case, most of the big objects in the room have been captured, even the book and the chair under the table which are located in an inapparent position. Nevertheless, the model is not able to discern the two cats lying down on table and chair in the upper part of the picture. This can be explained as the cats are rolling themselves for sleeping, which appears to be an unsual shape of cat. These shapes can be easily confused with other objects such as pillows, bags or even rocks. Hence, we can say that the **rfcn_resnet101_coco_11_06_2017** produces a fair detection but needs to be improved at the capacity of detecting single object at multiple shapes.
 
 * #### Detect objects in the living room using **faster_rcnn_inception_resnet_v2_atrous_coco_11_06_2017** model:
 
-(*Image source*: SNDESIGZ <http://www.sn-desigz.com/working-small-living-room.html>)
-
 ![living_room](./sample_images/living_room.jpg)
+(*Image source*: SNDESIGZ <http://www.sn-desigz.com/working-small-living-room.html>)
 
 ![living_room_annotated](./sample_images/living_room_annotated.jpg)
 
@@ -640,17 +640,20 @@ if __name__ == "__main__":
     detection.video_pipeline(video="./sample_videos/ducks.mp4", audio=False) 
     
 ```
-
 The original video and annotated videos are displayed below. To view the full video, please click on the GIF picture:
 
 * #### Original `swan_cross_road` video: 
-   (source: *Storyful Rights Management*: <https://www.youtube.com/watch?v=tOMF4HLBCA0>)
+   
    <img align="center" src="./sample_videos/swans_cross_road.gif"/>
+   
+(source: *Storyful Rights Management*: <https://www.youtube.com/watch?v=tOMF4HLBCA0>)
 
 * #### Annotated `swan_cross_road` video using **ssd_mobilenet_v1_coco_11_06_2017** model:
+
    <img align="center" src="./sample_videos/annotated_swans_cross_road_ssd_mobile.gif"/>
    
 * #### Annotated `swan_cross_road` video using **rfcn_resnet101_coco_11_06_2017** model:   
+
    <img align="center" src="./sample_videos/annotated_swans_cross_road_rfcn.gif"/>
  
 By comparing the two videos above, we can see that the **rfcn_resnet101_coco_11_06_2017** model produces a more comprehensive and detailed result of detection than the **ssd_mobilenet_v1_coco_11_06_2017** model. First of all, it can detect more objects in one time frame, especially the small and distant cars. Secondly, it can detect objects in complex shape that the **ssd_mobilenet_v1_coco_11_06_2017** can not realize, such as potted plant, hand bag and umbrella. Furthermore, it is able to detect the small white swans too while the **ssd_mobilenet_v1_coco_11_06_2017** can only "see" the big black swans.
@@ -672,12 +675,15 @@ if __name__=="__main__":
 
 The results are shown below:
  * #### Original webcam snapshot:
+ 
  <img align="center" src="./webcam_images/webcam2019-03-07_10h53m28s.jpg"/>
 
 * #### Annotated webcam snapshot:
+
 <img align="center" src="./webcam_images/annotated_webcam2019-03-07_10h53m28s.jpg"/>  
+
 ## 4. Real-time webcam detection <a name="realtime_webcam"></a>
-The previous **`webcam_pipeline`** is not a real-time detection system because it just takes snapshots and applies detection to the single taken image. This is a necessary limitation because dealing with webcam streaming requires intensive I/O data exchange. In particular, the problem is the queue of images arriving from the webcam to the Python interpreter that locks down Python until the transfer is completed. A solution based on threads to this problem is proposed by Adrian Rosebrock that you can read about at this Web address: <https://www.pyimagesearch.com/2015/12/21/increasing-webcam-fps-with-python-and-opencv/>
+The previous **`webcam_pipeline`** is not a real-time detection system because it just takes snapshots and applies detection to the single taken image. This is a necessary limitation because dealing with webcam streaming requires intensive I/O data exchange. In particular, the problem is the queue of images arriving from the webcam to the Python interpreter that locks down Python until the transfer is completed. A solution based on threads to this problem is proposed by Adrian Rosebrock that you can read about at this ![Web address](https://www.pyimagesearch.com/2015/12/21/increasing-webcam-fps-with-python-and-opencv/).
 
 The **`realtime_webcam.py`** below implements this solution using a **webcamStream** class that instantiates a thread for the webcam I/O, allowing the main Python program to always have at hand the latest received images, processed by the TensorFlow API using **ssd_mobilenet_v1_coco_11_06_2017** model. The processed image is plotted on the screen using OpenCv function, listening to the space bar keystroke in order to teminate the program. The recorded video will be saved at the target directory under specified format: 
 
@@ -758,6 +764,7 @@ if __name__ == "__main__":
 
 ```
    The recorded video after running the above script is shown below:
+   
    <img align="center" src="./webcam_videos/webcam2019-03-07_11h05m50s_final.gif"/>
 
 In the video above, the author has tested the webcam detection function with several common objects. Most of them are recognized correctly with the accurate bounding boxes. Nevertheless, in order to achieve such high accuracy, the objects must be placed at a close distance in their "typical" form. For example, the scissors  has to be opened instead of closed, which applied to the book as well. Meanwhile, the apple is easily misclassifed with a donut due to their high similarity. This is a sign pointing out that the model needs to be improved at detecting one single object at different shapes and angles, as well as differentiating objects with high level of analogy.
