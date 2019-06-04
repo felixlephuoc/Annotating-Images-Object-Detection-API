@@ -24,6 +24,7 @@ IV. [**Results and Applications**](#result)
 3. [Annotating screenshot captured by webcam with webcam_pipeline.py](#webcam_screenshot)
 4. [Real-time webcam detection ](#realtime_webcam)
 
+
 V. [**Limitations & Recommendations**](#limitations)
 
 VI. [**References**](#references)
@@ -486,11 +487,12 @@ The **`video_pipeline`** lets the **`VideoFileClip`** module from **`moviepy`** 
 
 * ### For Webcam:
 <br>The **`webcam_pipeline`** is the function that arranges all the necessary steps to annotate an image acquired from webcam:
-    1. Captures an image from the webcam through the **`capture_webcam`** function. As webcam have first to adjust to the light conditions present in the environment where the picture is taken, the procedure discard a number of initial shots, before taking the shots that will be used in the object detection procedure.
-    2. Saves the captured image to disk using **`cv2.imwrite`**.
-    3. Apply object detection on the image
-    4. Save the annotation JSON file
-    5. Represents visually the image with bounding boxes
+   
+   1. Captures an image from the webcam through the **`capture_webcam`** function. As webcam have first to adjust to the light conditions present in the environment where the picture is taken, the procedure discard a number of initial shots, before taking the shots that will be used in the object detection procedure.
+   2. Saves the captured image to disk using **`cv2.imwrite`**.
+   3. Apply object detection on the image
+   4. Save the annotation JSON file
+   5. Represents visually the image with bounding boxes
 
 ```python
    
@@ -646,7 +648,7 @@ The original video and annotated videos are displayed below. To view the full vi
    
    <img align="center" src="./sample_videos/swans_cross_road.gif"/>
    
-(source: *Storyful Rights Management*: <https://www.youtube.com/watch?v=tOMF4HLBCA0>)
+(Video source: *Storyful Rights Management*: <https://www.youtube.com/watch?v=tOMF4HLBCA0>)
 
 * #### Annotated `swan_cross_road` video using **ssd_mobilenet_v1_coco_11_06_2017** model:
 
