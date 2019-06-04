@@ -424,6 +424,7 @@ The function **`get_time`** conveniently transform the actual time into a string
 Finally we prepare three pipielines, for images, videos and webcams. 
 * ### For Images:<br/>   
 The **`file_pipeline`** function compires all the steps necessary to load images from storage and visualize/annotate them:
+
     1. Load images from disk
     2. Apply object detection on the loaded images
     3. Writting the annotations for each image in JSON file
@@ -556,7 +557,6 @@ if __name__ == "__main__":
 # IV. Result and Applicatitons <a name="result"></a>
 As a concluding paragraph of the code provisioning, we demonstrate just three scripts leveraging the three different sources used by our project: files, videos, webcam.
 ## 1. Annotating images with file_pipeline.py <a name="image"></a>
-
 Our first testing script aims at annotating and visualizing three images after importing the class **DetectionObj** from the local directory. Then we activate the class, declaring it using the **SSD MobileNet v1** model. After that, we have to put the path to every single image into a list and feed it to the method **`file_pipeline`** as follow:
 
 ```python
